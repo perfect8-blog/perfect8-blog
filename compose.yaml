@@ -1,0 +1,8 @@
+name: perfect8-blog
+
+services:
+  spring_backend:
+    image: spring_backend
+    build: .
+    ports:
+      - "8080:8080"
