@@ -20,7 +20,11 @@ jobs:
           java-version: 24 # Keep this in sync with the java version in pom.xml
 
       - name: Build
-        run: mvn --batch-mode clean install
+        run: |
+          cd spring-backend
+          mvn --batch-mode clean install
 
       - name: Run tests
-        run: mvn --batch-mode test
+        run: |
+          cd spring-backend
+          mvn --batch-mode test
