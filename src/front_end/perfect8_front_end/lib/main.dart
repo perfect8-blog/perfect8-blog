@@ -59,6 +59,7 @@ class HomeScreen extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ImageInput()),
           );
           print('Add button pressed');
+          print("The button has been pressed right now!");
         },
         child: Icon(Icons.add),
         tooltip: 'Add',
