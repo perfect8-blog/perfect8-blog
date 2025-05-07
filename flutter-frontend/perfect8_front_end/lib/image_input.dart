@@ -29,30 +29,42 @@ class _ImageInputState extends State<ImageInput> {
       appBar: AppBar(
         title: Text('Input Image Data'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: titleC,
-              decoration: InputDecoration(labelText: 'Enter Title'),
-            ),
-            TextField(
-              controller: descrpC,
-              decoration: InputDecoration(labelText: 'Enter Description'),
-            ),
-            TextField(
-              controller: urlC,
-              decoration: InputDecoration(labelText: 'Enter Image URL'),
-            ),
-            SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: _submit,
-              child: Text('Submit'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextField(
+                controller: titleC,
+                decoration: InputDecoration(labelText: 'Enter Title'),
+              ),
+              TextField(
+                controller: descrpC,
+                decoration: InputDecoration(labelText: 'Enter Description'),
+              ),
+              TextField(
+                controller: urlC,
+                decoration: InputDecoration(labelText: 'Enter Image URL'),
+                keyboardType: TextInputType.url,
+              ),
+              SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: _submit,
+                child: Text('Submit'),
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    titleC.dispose();
+    descrpC.dispose();
+    urlC.dispose();
+    super.dispose();
   }
 }

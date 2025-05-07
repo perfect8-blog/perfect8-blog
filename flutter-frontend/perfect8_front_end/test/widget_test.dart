@@ -7,24 +7,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:perfect8_front_end/main.dart';
+import 'package:perfect8_front_end/image_input.dart'; // Replace with actual path
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('ImageInput form renders properly', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: ImageInput()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Enter Title'), findsOneWidget);
+    expect(find.text('Enter Description'), findsOneWidget);
+    expect(find.text('Enter Image URL'), findsOneWidget);
+    expect(find.text('Submit'), findsOneWidget);
   });
 }
