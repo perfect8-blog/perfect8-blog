@@ -1,8 +1,51 @@
 name: perfect8-blog
 
 services:
-  spring_backend:
+  spring-backend:
     image: spring_backend
     build: .
     ports:
       - "8080:8080"
+    networks:
+      - blog-db-net
+    depends_on:
+      blog-db:
+        condition: service_healthy
+        restart: true
+    secrets:
+      - db-user-password
+
+  blog-db:
+    image: mariadb:11
+    ports:
+      - "3306:3306"
+    networks:
+      - blog-db-net
+    volumes:
+      - blog-db-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: perfect8_blog
+      MYSQL_USER: user
+      MYSQL_PASSWORD_FILE: /run/secrets/db-user-password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db-root-password
+    secrets:
+      - db-user-password
+      - db-root-password
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  blog-db-net:
+
+volumes:
+  blog-db-data:
+
+secrets:
+  db-user-password:
+    environment: db-user-password
+  db-root-password:
+    environment: db-root-password
