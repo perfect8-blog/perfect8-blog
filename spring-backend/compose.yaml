@@ -12,6 +12,8 @@ services:
       blog-db:
         condition: service_healthy
         restart: true
+    environment:
+      - spring_profiles_active=${spring_profiles_active}
     secrets:
       - db-user-password
 
