@@ -1,16 +1,47 @@
 import 'package:flutter/material.dart';
-import 'image_input.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:perfect8_front_end/api/post.dart';
+import 'package:perfect8_front_end/image_input.dart';
+import 'package:perfect8_front_end/post_create.dart';
+import 'package:perfect8_front_end/post_view.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
+  usePathUrlStrategy();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Future<Post> futurePost;
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final router = GoRouter(
+      initialLocation: '/',
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) => HomeScreen(),
+        ),
+        /*GoRoute(
+          path: '/create',
+          builder: (context, state) => PostCreate(),
+        ),*/
+        GoRoute(
+          path: '/posts/:slug',
+          builder:(context, state) => PostView(slug: state.pathParameters["slug"]!),
+        ),
+      ],
+    );
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Perfect8-blog!',
       theme: ThemeData.dark().copyWith(
@@ -20,7 +51,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: HomeScreen(), // Moved scaffold to a separate widget for clarity
+      routerConfig: router,
     );
   }
 }
@@ -61,8 +92,8 @@ class HomeScreen extends StatelessWidget {
           print('Add button pressed');
           print("The button has been pressed right now!");
         },
+        tooltip: 'Create blog post',
         child: Icon(Icons.add),
-        tooltip: 'Add',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
