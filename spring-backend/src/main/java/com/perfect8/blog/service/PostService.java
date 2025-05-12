@@ -54,6 +54,11 @@ public class PostService {
         return post;
     }
 
+    //Recently posts
+    public List<Post> getAllpostSorted(){
+        return postRepository.findAllByOrderByCreatedAtDesc();
+    }
+
     /// Create a slug from a title.
     /// @param title    The title
     /// @return         Slug

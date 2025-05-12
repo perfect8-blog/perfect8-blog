@@ -28,6 +28,16 @@ public class PostController {
                 .map(PostDtoMapper::toDto);
     }
 
+
+    //Take the recent view from the data-base
+    @GetMapping("/recent}")
+    public List<PostDto> getAllRecently(){
+        return postService.getAllRecently
+               .stream()
+               .map(PostDtoMapper::toDto)
+               .toList();
+    }
+
     /// Create a new post.
     /// @param postCreationRequestDto   The post to be created
     /// @return                         PostCreationResponseDto

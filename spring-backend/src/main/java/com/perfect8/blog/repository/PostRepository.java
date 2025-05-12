@@ -1,4 +1,7 @@
 package com.perfect8.blog.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface PostRepository {
+public interface PostRepository extends JpaRepository<Post, Long> {
+    List<Post> findAllByOrderByCreatedAtDesc();
 }

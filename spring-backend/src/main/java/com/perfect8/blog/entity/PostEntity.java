@@ -23,6 +23,8 @@ public class PostEntity {
         this.publishedAt = publishedAt;
     }
 
+    
+
     public long getId() {
         return id;
     }
@@ -40,6 +42,6 @@ public class PostEntity {
     }
 
     public LocalDateTime getPublishedAt() {
-        return publishedAt;
+        return publishedAt = LocalDateTime.now();
     }
 }
