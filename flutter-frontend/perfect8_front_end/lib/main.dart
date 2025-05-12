@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:perfect8_front_end/api/post.dart';
 import 'package:perfect8_front_end/image_input.dart';
-import 'package:perfect8_front_end/post_create.dart';
 import 'package:perfect8_front_end/post_view.dart';
 import 'package:go_router/go_router.dart';
 
