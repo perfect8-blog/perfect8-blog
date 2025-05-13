@@ -25,6 +25,9 @@ services:
       - blog-db-net
     volumes:
       - blog-db-data:/var/lib/mysql
+      - type: bind
+        source: src/main/resources/db
+        target: /docker-entrypoint-initdb.d
     environment:
       MYSQL_DATABASE: perfect8_blog
       MYSQL_USER: user

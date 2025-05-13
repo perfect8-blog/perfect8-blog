@@ -1,22 +1,35 @@
 package com.perfect8.blog.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.time.LocalDateTime;
 
-// TODO: make this a database entity
+@Table("post")
 public class PostEntity {
     /// The database ID of the post
-    private final long id;
+    private @Id long id;
     /// The URL slug
-    private final String slug;
+    private String slug;
     /// The title of the post
-    private final String title;
+    private String title;
     /// The body text
-    private final String body;
+    private String body;
     /// When the post was published
-    private final LocalDateTime publishedAt;
+    private LocalDateTime publishedAt;
+
+    public PostEntity() {
+    }
 
     public PostEntity(long id, String slug, String title, String body, LocalDateTime publishedAt) {
         this.id = id;
+        this.slug = slug;
+        this.title = title;
+        this.body = body;
+        this.publishedAt = publishedAt;
+    }
+
+    public PostEntity(String slug, String title, String body, LocalDateTime publishedAt) {
         this.slug = slug;
         this.title = title;
         this.body = body;

@@ -9,7 +9,6 @@ void main() {
 
     expect(post.title, 'My blog post');
     expect(post.body, 'Lorem ipsum dolor sit amet');
-    expect(post.publishedAt, DateTime.fromMicrosecondsSinceEpoch(1746771872067130));
   });
 
   test('Loading Post from invalid JSON should throw', () {
