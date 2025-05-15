@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:perfect8_front_end/post.dart';
+import 'package:perfect8_front_end/api/post_preview.dart';
 import 'package:perfect8_front_end/post_view.dart';
 import 'package:perfect8_front_end/post_create.dart';
 import 'package:go_router/go_router.dart';
@@ -56,12 +56,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<Post>> futurePosts;
+  late Future<List<PostPreview>> futurePosts;
 
   @override
   void initState() {
     super.initState();
-    futurePosts = PostService().fetchAllPosts(); // Call the backend API here
+    futurePosts = PostPreviewService().fetchAllPosts(); // Call the backend API here
   }
 
   @override
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Text('Here are images shown from Perfect8-tour around the World!'),
         centerTitle: true,
       ),
-      body: FutureBuilder<List<Post>>(
+      body: FutureBuilder<List<PostPreview>>(
         future: futurePosts,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
