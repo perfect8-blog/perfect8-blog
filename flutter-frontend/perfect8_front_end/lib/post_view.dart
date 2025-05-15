@@ -48,7 +48,7 @@ class _PostViewState extends State<PostView> {
                       children: [
                         Text(snapshot.data!.title, textScaler: TextScaler.linear(2)),
                         Text(snapshot.data!.body),
-                        Text('Published at: ${snapshot.data!.publishedAt.toIso8601String()}')
+                        Text('Published at: ${snapshot.data!.publishedAt.toString()}')
                       ],
                     );
                   }
