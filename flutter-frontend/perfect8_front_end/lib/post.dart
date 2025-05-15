@@ -1,24 +1,21 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const String baseUrl = 'http://localhost:8080/posts'; // Change if needed
+const String baseUrl = 'http://localhost:8080/posts/'; // Change if needed
 
 class Post {
   final String slug;
   final String title;
-  final String body;
 
   Post({
     required this.slug,
     required this.title,
-    required this.body,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       slug: json['slug'],
       title: json['title'],
-      body: json['body'],
     );
   }
 }

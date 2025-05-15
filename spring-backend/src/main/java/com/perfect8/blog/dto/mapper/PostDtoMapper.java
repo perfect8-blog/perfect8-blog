@@ -8,4 +8,6 @@ public class PostDtoMapper {
     public static @NotNull PostDto toDto(@NotNull PostEntity entity) {
         return new PostDto(entity.getTitle(), entity.getBody(), entity.getPublishedAt());
     }
+
+
 }

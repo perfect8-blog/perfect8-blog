@@ -3,7 +3,9 @@ package com.perfect8.blog.controller;
 import com.perfect8.blog.dto.PostCreationRequestDto;
 import com.perfect8.blog.dto.PostCreationResponseDto;
 import com.perfect8.blog.dto.PostDto;
+import com.perfect8.blog.dto.SlugDTO;
 import com.perfect8.blog.dto.mapper.PostDtoMapper;
+import com.perfect8.blog.dto.mapper.SlugToDTO;
 import com.perfect8.blog.service.PostService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.*;
@@ -30,10 +32,10 @@ public class PostController {
                 .map(PostDtoMapper::toDto);
     }
     @GetMapping("/")
-    public List<PostDto> getAllPosts(){
+    public List<SlugDTO> getAllPosts(){
         return postService.getAllPosts()
                         .stream()
-                        .map(PostDtoMapper::toDto)
+                        .map(SlugToDTO::toDto)
                         .toList();
     }
 

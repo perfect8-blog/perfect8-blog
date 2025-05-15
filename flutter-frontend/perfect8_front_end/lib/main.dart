@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return ListTile(
                   title: Text(post.title),
                   subtitle: Text(
-                    post.body,
+                    "hello",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
