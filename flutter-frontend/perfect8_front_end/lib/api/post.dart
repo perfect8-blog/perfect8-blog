@@ -41,7 +41,7 @@ class NewPost {
   final String title;
   final String body;
 
-  static const String URL_PATH = "/posts";
+  static const String URL_PATH = "/api/v1/posts";
 
   const NewPost({required this.title, required this.body});
 
