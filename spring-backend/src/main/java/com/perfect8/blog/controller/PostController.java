@@ -7,6 +7,8 @@ import com.perfect8.blog.dto.mapper.PostDtoMapper;
 import com.perfect8.blog.service.PostService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
 
 import java.util.Optional;
 
@@ -27,6 +29,14 @@ public class PostController {
         return postService.getPostBySlug(slug)
                 .map(PostDtoMapper::toDto);
     }
+    @GetMapping("/")
+    public List<PostDto> getAllPosts(){
+        return postService.getAllPosts()
+                        .stream()
+                        .map(PostDtoMapper::toDto)
+                        .toList();
+    }
+
 
     /// Create a new post.
     /// @param postCreationRequestDto   The post to be created

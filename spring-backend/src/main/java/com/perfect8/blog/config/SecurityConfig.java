@@ -19,15 +19,15 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/posts/**").permitAll() //TODO require auth to create posts
+                        .requestMatchers("/**").permitAll() //TODO require auth to create posts
                         //.requestMatchers(HttpMethod.POST, "/posts").permitAll() // Create posts
                         //.requestMatchers(HttpMethod.GET, "/posts/*").permitAll() // View posts
                 )
                 .build();
     }
 
-    /*@Bean
+    @Bean
     WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.debug(true);
-    }*/
+    }
 }
