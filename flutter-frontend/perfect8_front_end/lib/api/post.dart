@@ -34,3 +34,35 @@ class Post {
     };
   }
 }
+
+/// Represents a new post not yet put in the database.
+/// Has the same data as Post except without the publication date.
+class NewPost {
+  final String title;
+  final String body;
+
+  static const String URL_PATH = "/posts";
+
+  const NewPost({required this.title, required this.body});
+
+  /// Returns the slug of the newly created post
+  Future<String> createPost() async {
+    //TODO don't hardcode localhost
+    Uri uri = Uri(scheme: "http", host: "localhost", port: 8080, path: URL_PATH + "/");
+    Map<String, String> headers = {
+      'Content-type' : 'application/json',
+      'Accept': 'application/json',
+    };
+    final resp = await http.post(uri, headers: headers, body: jsonEncode(this));
+
+    return switch (resp.statusCode) {
+      200 => jsonDecode(resp.body).slug,
+      _ => throw Exception("Unknown error occured when creating a new Post.")
+    };
+  }
+
+  Map<String, dynamic> toJson() => {
+    'title': title,
+    'body': body,
+  };
+}
