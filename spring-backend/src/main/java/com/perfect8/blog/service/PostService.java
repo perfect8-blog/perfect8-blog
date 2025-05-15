@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,12 @@ public class PostService {
 
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
+    }
+
+    /// Get all posts.
+    /// @return         A list of all posts
+    public List<PostEntity> getAllPosts() {
+        return (List<PostEntity>) postRepository.findAll();
     }
 
     /// Get a post by its unique URL slug.
