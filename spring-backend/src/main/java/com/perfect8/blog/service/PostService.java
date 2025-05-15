@@ -21,13 +21,13 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
+    /// Get all posts.
+    /// @return         A list of all posts
+    public List<PostEntity> getAllPosts() {
+        return (List<PostEntity>) postRepository.findAll();
+    }
 
-public List<PostEntity> getAllPosts() {
-    return (List<PostEntity>) postRepository.findAll();
-}
-
-
-/// Get a post by its unique URL slug.
+    /// Get a post by its unique URL slug.
     /// @param slug     The post's unique URL slug
     /// @return         An Optional<PostEntity> that is present if the post exists
     public @NotNull Optional<PostEntity> getPostBySlug(@NotNull String slug) {

@@ -26,8 +26,8 @@ public class SecurityConfig {
                 .build();
     }
 
-    @Bean
+    /*@Bean
     WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.debug(true);
-    }
+    }*/
 }
