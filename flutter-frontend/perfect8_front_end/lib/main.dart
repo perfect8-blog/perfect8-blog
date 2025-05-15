@@ -3,6 +3,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:perfect8_front_end/api/post.dart';
 import 'package:perfect8_front_end/image_input.dart';
 import 'package:perfect8_front_end/post_view.dart';
+import 'package:perfect8_front_end/post_create.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
@@ -29,10 +30,10 @@ class _MyAppState extends State<MyApp> {
           path: '/',
           builder: (context, state) => HomeScreen(),
         ),
-        /*GoRoute(
+        GoRoute(
           path: '/create',
           builder: (context, state) => PostCreate(),
-        ),*/
+        ),
         GoRoute(
           path: '/posts/:slug',
           builder:(context, state) => PostView(slug: state.pathParameters["slug"]!),
@@ -85,12 +86,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageInput()),
-          );
-          print('Add button pressed');
-          print("The button has been pressed right now!");
-        },
+        onPressed: () => context.go("/create"),
         tooltip: 'Create blog post',
         child: Icon(Icons.add),
       ),

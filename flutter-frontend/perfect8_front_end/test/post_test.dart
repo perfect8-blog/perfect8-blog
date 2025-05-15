@@ -13,6 +13,14 @@ void main() {
 
   test('Loading Post from invalid JSON should throw', () {
     final testJson = '{"title2":"My blog post","body2":"Lorem ipsum dolor sit amet","publishedAt2":"2025-05-09T08:24:32.067130593"}';
+
     expect(() => Post.fromJson(jsonDecode(testJson)), throwsA(isA<FormatException>()));
+  });
+
+  test('NewPost should serialize to JSON', () {
+    final newPost = NewPost(title: 'Test Blog Post', body: 'Awawawa');
+    final json = jsonEncode(newPost);
+
+    expect(json, '{"title":"Test Blog Post","body":"Awawawa"}');
   });
 }

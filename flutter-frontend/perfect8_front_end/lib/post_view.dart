@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perfect8_front_end/api/post.dart';
+import 'package:go_router/go_router.dart';
 
 // Class names in Dart should be PascalCase (ImageInput, not image_input)
 class PostView extends StatefulWidget {
@@ -15,7 +16,7 @@ class _PostViewState extends State<PostView> {
   late Future<Post> futurePost;
 
   void _submit() {
-    Navigator.pop(context);
+    context.go("/");
   }
 
   @override
