@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const String baseUrl = 'http://localhost:8080/posts/'; // Change if needed
+const String baseUrl = 'http://cmagnusb.org/api/v1/posts/'; // Change if needed
 
 class PostPreview {
   final String slug;

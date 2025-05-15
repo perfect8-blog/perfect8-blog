@@ -7,7 +7,7 @@ class Post {
   final String body;
   final DateTime publishedAt;
 
-  static const String URL_PATH = "/posts";
+  static const String URL_PATH = "/api/v1/posts";
 
   const Post({required this.title, required this.body, required this.publishedAt});
 
@@ -24,7 +24,7 @@ class Post {
 
   static Future<Post> fetchPost(String slug) async {
     //TODO don't hardcode localhost
-    Uri uri = Uri(scheme: "http", host: "localhost", port: 8080, path: URL_PATH + "/" + slug);
+    Uri uri = Uri(scheme: "http", host: "cmagnusb.org", port: 80, path: URL_PATH + "/" + slug);
     final resp = await http.get(uri);
 
     return switch (resp.statusCode) {
@@ -48,7 +48,7 @@ class NewPost {
   /// Returns the slug of the newly created post
   Future<String> createPost() async {
     //TODO don't hardcode localhost
-    Uri uri = Uri(scheme: "http", host: "localhost", port: 8080, path: URL_PATH + "/");
+    Uri uri = Uri(scheme: "http", host: "cmagnusb.org", port: 80, path: URL_PATH + "/");
     Map<String, String> headers = {
       'Content-type' : 'application/json',
       'Accept': 'application/json',
