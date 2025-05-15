@@ -6,16 +6,19 @@ const String baseUrl = 'http://localhost:8080/posts/'; // Change if needed
 class PostPreview {
   final String slug;
   final String title;
+  final DateTime publishedAt;
 
   PostPreview({
     required this.slug,
     required this.title,
+    required this.publishedAt,
   });
 
   factory PostPreview.fromJson(Map<String, dynamic> json) {
     return PostPreview(
       slug: json['slug'],
       title: json['title'],
+      publishedAt: DateTime.parse(json['publishedAt']),
     );
   }
 }
